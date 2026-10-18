@@ -23,8 +23,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend application source code
 COPY . .
 
-# Create models directory where best.pt can be mounted or copied
-RUN mkdir -p /app/models
+# Copy trained YOLO model to the expected location
+RUN mkdir -p /app/models && cp /app/model/best.pt /app/models/best.pt
 
 # Default environment variables
 ENV MODEL_PATH=/app/models/best.pt \
